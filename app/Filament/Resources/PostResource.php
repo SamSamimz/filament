@@ -22,6 +22,9 @@ class PostResource extends Resource
     protected static ?string $navigationLabel = 'Post';
 
     protected static ?string $modelLabel = "All Posts";
+    
+    protected static ?string $navigationGroup = 'Post';
+
 
 
     public static function form(Form $form): Form
