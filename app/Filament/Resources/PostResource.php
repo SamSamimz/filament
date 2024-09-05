@@ -46,7 +46,7 @@ class PostResource extends Resource
                     ->columnSpanFull(),
             ]);
     }
-
+    // ** Filament is awesome.
     public static function table(Table $table): Table
     {
         return $table
