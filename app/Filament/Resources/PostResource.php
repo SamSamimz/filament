@@ -33,6 +33,7 @@ class PostResource extends Resource
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
                     ->searchable()
+                    ->preload()
                     // ->native(false)
                     ->required(),
                 Forms\Components\TextInput::make('title')
