@@ -32,6 +32,7 @@ class PostResource extends Resource
             ->schema([
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
+                    // ->native(false)
                     ->required(),
                 Forms\Components\TextInput::make('title')
                     ->required()
