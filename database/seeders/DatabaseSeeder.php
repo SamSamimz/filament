@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\District;
 use App\Models\Division;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,19 +22,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'admin@admin.com',
         //     'password' => bcrypt('admin')
         // ]);
-        $division = [
-            'Rangpur',
-            'Dhaka',
-            'Rajshahi',
-            'Sylhet',
-            'Kumilla',
-            'Chittagong'
 
-        ];
-
-        foreach($division as $div) {
-            Division::create(['name' => $div]);
-        }
+        // for ($i=0; $i < 4; $i++) {
+            // District::create(['division_id' => 2, 'name' => 'Tangail']);
+        // }
 
     }
 }

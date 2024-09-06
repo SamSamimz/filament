@@ -4,16 +4,21 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EmployeeResource\Pages;
 use App\Filament\Resources\EmployeeResource\RelationManagers;
+use App\Models\District;
+use App\Models\Division;
 use App\Models\Employee;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Collection;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class EmployeeResource extends Resource
 {
@@ -39,6 +44,16 @@ class EmployeeResource extends Resource
                 ->maxLength(255),
                 Select::make('division_id')
                 ->relationship('division','name')
+                ->searchable()
+                ->preload()
+                ->live()
+                ->required(),
+                Select::make('district_id')
+                ->options(fn(Get $get): Collection => District::query()
+                ->where('division_id', $get('division_id'))
+                ->pluck('name','id'))
+                ->searchable()
+                ->preload()
                 ->required()
             ]);
     }
