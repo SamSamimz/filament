@@ -12,6 +12,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -47,6 +48,7 @@ class EmployeeResource extends Resource
                 ->searchable()
                 ->preload()
                 ->live()
+                ->afterStateUpdated(fn(Set $set) => $set('district_id', null))
                 ->required(),
                 Select::make('district_id')
                 ->options(fn(Get $get): Collection => District::query()
