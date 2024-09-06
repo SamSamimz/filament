@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Division;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,10 +16,24 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('admin')
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@admin.com',
+        //     'password' => bcrypt('admin')
+        // ]);
+        $division = [
+            'Rangpur',
+            'Dhaka',
+            'Rajshahi',
+            'Sylhet',
+            'Kumilla',
+            'Chittagong'
+
+        ];
+
+        foreach($division as $div) {
+            Division::create(['name' => $div]);
+        }
+
     }
 }

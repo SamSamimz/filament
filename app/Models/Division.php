@@ -10,9 +10,17 @@ class Division extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function districts(): HasMany
     {
         return $this->hasMany(District::class);
+    }
+
+
+    public function employees() :HasMany
+    {
+        return $this->hasMany(Employee::class);
     }
 
 }

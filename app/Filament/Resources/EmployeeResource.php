@@ -6,6 +6,8 @@ use App\Filament\Resources\EmployeeResource\Pages;
 use App\Filament\Resources\EmployeeResource\RelationManagers;
 use App\Models\Employee;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +27,19 @@ class EmployeeResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+                TextInput::make('email')
+                ->required()
+                ->unique()
+                ->email(),
+                TextInput::make('phone')
+                ->required()
+                ->maxLength(255),
+                Select::make('division_id')
+                ->relationship('division','name')
+                ->required()
             ]);
     }
 
